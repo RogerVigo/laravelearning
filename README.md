@@ -1,3 +1,1 @@
 # laravelearning
-
-Bla bla
