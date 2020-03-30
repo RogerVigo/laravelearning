@@ -9,6 +9,6 @@
 </head>
 <body>
 <h1>POST!</h1>
-<p>{{$post}}</p>
+<p>{{$post->body}}</p>
 </body>
 </html>
