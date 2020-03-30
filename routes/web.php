@@ -51,3 +51,6 @@ Route::get('/post/{post}', function ($post) {
         'post' => $post]);
 
 });
+
+//Usando controlador
+Route::get('/post-controller/{post}','PostsController@show');
