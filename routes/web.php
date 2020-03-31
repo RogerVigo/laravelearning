@@ -53,4 +53,5 @@ Route::get('/post/{post}', function ($post) {
 });
 
 //Usando controlador
-Route::get('/post-controller/{post}','PostsController@show');
+Route::get('/post-controller/{post}', 'PostsController@show');
+Route::get('/post-controller-two/{post}', 'PostsController2@show');
