@@ -55,3 +55,25 @@ Route::get('/post/{post}', function ($post) {
 //Usando controlador
 Route::get('/post-controller/{post}', 'PostsController@show');
 Route::get('/post-controller-two/{post}', 'PostsController2@show');
+
+//Rutas template
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/clients', function () {
+    return view('client');
+});
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/careers', function () {
+    return view('career');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
