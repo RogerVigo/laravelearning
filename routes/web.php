@@ -68,8 +68,11 @@ Route::get('/clients', function () {
 
 Route::get('/about', function () {
 
-    return view('about', ['articles' => App\Article::latest()->get()]);
+    return view('about', ['articles' => App\Article::take(3)->latest()->get()]);
 });
+
+//Ruta a articulos
+Route::get('/articles/{article}', 'ArticlesController@show');
 
 Route::get('/careers', function () {
     return view('career');
