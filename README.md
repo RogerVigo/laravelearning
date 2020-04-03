@@ -1,5 +1,3 @@
-# laravelearning
-
 #Installation
 
 ```composer install```
