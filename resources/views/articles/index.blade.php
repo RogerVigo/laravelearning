@@ -7,7 +7,7 @@
                 <div id="content">
                     <a class="title">
                         <h2>
-                            <a href="/articles/{{$article->id}}">
+                            <a href="{{route('articles.show',$article)}}">
                                 {{$article->title}}
                             </a>
                         </h2>

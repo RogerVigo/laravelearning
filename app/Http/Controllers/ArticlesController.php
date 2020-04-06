@@ -30,8 +30,7 @@ class ArticlesController extends Controller
         Article::create($this->validateArticle());
 
 
-
-        return redirect('/articles'); //redirige a la pagina indicada una vez se guarden los datos
+        return redirect(route('article.index')); //redirige a la pagina indicada una vez se guarden los datos
     }
 
     public function edit(Article $article)
@@ -47,7 +46,7 @@ class ArticlesController extends Controller
         $article->update($this->validateArticle());
 
 
-        return redirect('/articles/' . $article->id);
+        return redirect(route($article->path()));
 
     }
 
