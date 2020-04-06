@@ -6,10 +6,8 @@ use App\Article;
 
 class ArticlesController extends Controller
 {
-    public function show($id)
+    public function show(Article $article)
     {
-        $article = Article::find($id);
-
         return view('articles.show', ['article' => $article]);
     }
 
@@ -47,14 +45,14 @@ class ArticlesController extends Controller
         return redirect('/articles'); //redirige a la pagina indicada una vez se guarden los datos
     }
 
-    public function edit($id)
+    public function edit(Article $article)
     {
-        $article = Article::find($id);
+
 
         return view('articles.edit', compact('article')); //revisar funcion compact
     }
 
-    public function update($id)
+    public function update(Article $article)
     {
 
         request()->validate([
@@ -63,7 +61,7 @@ class ArticlesController extends Controller
             'body' => 'required'
         ]);
 
-        $article = Article::find($id);
+
         $article->title = request('title');
         $article->excerpt = request('excerpt');
         $article->body = request('body');
