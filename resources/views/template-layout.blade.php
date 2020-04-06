@@ -16,11 +16,13 @@ Released   : 20140225
     <title></title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
+
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet"/>
+
 
     <link href="{{asset("css/default.css")}}" rel="stylesheet" type="text/css" media="all"/>
     <link href="{{asset("css/fonts.css")}}" rel="stylesheet" type="text/css" media="all"/>
-
+    @yield('head')
 </head>
 <body>
 <div id="header-wrapper">

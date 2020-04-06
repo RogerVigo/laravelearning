@@ -71,8 +71,17 @@ Route::get('/about', function () {
     return view('about', ['articles' => App\Article::take(3)->latest()->get()]);
 });
 
+Route::get('/articles', 'ArticlesController@index');
+//REST
+Route::post('/articles', 'ArticlesController@store');
+Route::get('/articles/create', 'ArticlesController@create');
+Route::get('/articles/{article}/edit', 'ArticlesController@edit');
+
+
 //Ruta a articulos
 Route::get('/articles/{article}', 'ArticlesController@show');
+Route::put('/articles/{article}', 'ArticlesController@update');
+
 
 Route::get('/careers', function () {
     return view('career');
