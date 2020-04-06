@@ -6,10 +6,8 @@ use App\Article;
 
 class ArticlesController extends Controller
 {
-    public function show($id)
+    public function show(Article $article)
     {
-        $article = Article::find($id);
-
         return view('articles.show', ['article' => $article]);
     }
 
@@ -29,48 +27,38 @@ class ArticlesController extends Controller
     {
         //validation
 
-        request()->validate([
-            'title' => 'required',
-            'excerpt' => ['required', 'min:3', 'max:5'],//requirido obligatorio con minimo de 3 chars y maximo de 5 chars
-            'body' => 'required'
-        ]);
+        Article::create($this->validateArticle());
 
 
-        $article = new Article();
-
-        $article->title = request('title');
-        $article->excerpt = request('excerpt');
-        $article->body = request('body');
-
-        $article->save();
-
-        return redirect('/articles'); //redirige a la pagina indicada una vez se guarden los datos
+        return redirect(route('article.index')); //redirige a la pagina indicada una vez se guarden los datos
     }
 
-    public function edit($id)
+    public function edit(Article $article)
     {
-        $article = Article::find($id);
+
 
         return view('articles.edit', compact('article')); //revisar funcion compact
     }
 
-    public function update($id)
+    public function update(Article $article)
     {
 
-        request()->validate([
+        $article->update($this->validateArticle());
+
+
+        return redirect(route($article->path()));
+
+    }
+
+    /**
+     * @return array
+     */
+    public function validateArticle(): array
+    {
+        return request()->validate([
             'title' => 'required',
             'excerpt' => ['required', 'min:3', 'max:5'],//requirido obligatorio con minimo de 3 chars y maximo de 5 chars
             'body' => 'required'
         ]);
-
-        $article = Article::find($id);
-        $article->title = request('title');
-        $article->excerpt = request('excerpt');
-        $article->body = request('body');
-
-        $article->save();
-
-        return redirect('/articles/' . $article->id);
-
     }
 }
