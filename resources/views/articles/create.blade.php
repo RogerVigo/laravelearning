@@ -2,6 +2,8 @@
 
 @section('head')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.1/css/bulma.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 @endsection
 @section('content')
     <div id="wrapper">
@@ -40,6 +42,26 @@
                                   id="body">{{old('body')}}</textarea>
                         @error('body')
                         <p class="help is-danger"> {{$errors ->first('body')}}</p>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+
+
+                        <h2>Tags</h2>
+                        <label class="label">
+                            <select name="tags[]" multiple>
+                                @foreach($tags as $tag)
+                                    <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                @endforeach
+                            </select>
+                        </label>
+
+
+                        @error('tags')
+                        <p class="help is-danger"> {{$message}}</p>
                         @enderror
                     </div>
                 </div>

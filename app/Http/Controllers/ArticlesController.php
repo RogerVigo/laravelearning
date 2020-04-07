@@ -3,24 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Tag;
 
 class ArticlesController extends Controller
 {
-    public function show(Article $article)
-    {
-        return view('articles.show', ['article' => $article]);
-    }
-
     public function index()
     {
-        $articles = Article::latest()->get();
+        if (request('tag')) {
+            $articles = Tag::where('name', request('tag'))->firstOrFail()->articles;
+
+        } else {
+            $articles = Article::latest()->get();
+        }
+
 
         return view('articles.index', ['articles' => $articles]);
     }
 
+    public function show(Article $article)
+    {
+
+        return view('articles.show', ['article' => $article]);
+    }
+
     public function create()
     {
-        return view('articles.create');
+        //dd(request()->all());
+        return view('articles.create', [
+            'tags' => Tag::all()
+        ]);
     }
 
     public function store()
@@ -29,6 +40,11 @@ class ArticlesController extends Controller
 
         Article::create($this->validateArticle());
 
+        $article = new Article(request(['title', 'excerpt', 'body']));
+        $article->user_id = 1; //no reconoce el user_id default en la bbd. Al poner como default en la bdd '1' y crear
+        // una nueva entrada, crea 2 iduales,PERO una tiene los tags y la otra no
+        $article->save();
+        $article->tags()->attach(request('tags'));
 
         return redirect(route('article.index')); //redirige a la pagina indicada una vez se guarden los datos
     }
@@ -58,7 +74,8 @@ class ArticlesController extends Controller
         return request()->validate([
             'title' => 'required',
             'excerpt' => ['required', 'min:3', 'max:5'],//requirido obligatorio con minimo de 3 chars y maximo de 5 chars
-            'body' => 'required'
+            'body' => 'required',
+            'tags' => 'exists:tags,id'
         ]);
     }
 }
