@@ -21,7 +21,7 @@ class CreateArticlesTable extends Migration
             $table->text('body');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete()->onUpdate('cascade');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('articles');
+        Schema::dropIfExists('articles');
     }
 }
