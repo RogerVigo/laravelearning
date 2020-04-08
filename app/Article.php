@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    protected $fillable = ['title', 'excerpt', 'body']; //Si te da igual lo que se vaya a guardar, dejar un array vacio.
+    protected $fillable = ['title', 'excerpt', 'body', 'user_id']; //Si te da igual lo que se vaya a guardar, dejar un array vacio.
 
     function path()
     {
@@ -20,6 +20,6 @@ class Article extends Model
 
     function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 }

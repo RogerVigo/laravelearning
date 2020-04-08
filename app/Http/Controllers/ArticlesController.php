@@ -38,11 +38,14 @@ class ArticlesController extends Controller
     {
         //validation
 
-        Article::create($this->validateArticle());
+        /*
+        $articleValidated=$this->validateArticle();
+        $articleValidated['user_id']=1;
+        Article::create($articleValidated);
+        */
 
         $article = new Article(request(['title', 'excerpt', 'body']));
-        $article->user_id = 1; //no reconoce el user_id default en la bbd. Al poner como default en la bdd '1' y crear
-        // una nueva entrada, crea 2 iduales,PERO una tiene los tags y la otra no
+        $article->user_id = 1;
         $article->save();
         $article->tags()->attach(request('tags'));
 
