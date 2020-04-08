@@ -90,3 +90,7 @@ Route::get('/careers', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

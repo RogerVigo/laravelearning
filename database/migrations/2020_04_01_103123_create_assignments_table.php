@@ -29,6 +29,6 @@ class CreateAssignmentsTable extends Migration
      */
     public function down()
     {
-       // Schema::dropIfExists('assignments');
+       Schema::dropIfExists('assignments');
     }
 }
