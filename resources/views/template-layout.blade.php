@@ -19,14 +19,13 @@ Released   : 20140225
 
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet"/>
 
-
-    <link href="{{asset("css/default.css")}}" rel="stylesheet" type="text/css" media="all"/>
-    <link href="{{asset("css/fonts.css")}}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="{{asset('css/default.css')}}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="{{asset('css/fonts.css')}}" rel="stylesheet" type="text/css" media="all"/>
     @yield('head')
 </head>
 <body>
 <div id="header-wrapper">
-    <div id="header" class="container">
+    <div id="header" class="container-fluid">
         <div id="logo">
             <h1><a href="/">SimpleWork</a></h1>
         </div>
@@ -40,14 +39,19 @@ Released   : 20140225
                                                                                         title="">About Us</a></li>
                 <li class="{{Request::path()==='careers' ? 'current_page_item' : ''}}"><a href="/articles" accesskey="4"
                                                                                           title="">Articles</a></li>
-                <li class="{{Request::path()==='contact' ? 'current_page_item' : ''}}"><a href="#" accesskey="5"
+                <li class="{{Request::path()==='contact' ? 'current_page_item' : ''}}"><a href="/contact" accesskey="5"
                                                                                           title="">Contact Us</a></li>
             </ul>
         </div>
     </div>
     @yield('header')
 </div>
+
 @yield('content')
+
+
+@yield('contact')
+
 
 <div id="copyright" class="container">
     <p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a

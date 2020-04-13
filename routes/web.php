@@ -87,9 +87,12 @@ Route::get('/careers', function () {
     return view('career');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/contact', 'ContactController@show');
+Route::post('/contact', 'ContactController@store');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 
 Auth::routes();
 
