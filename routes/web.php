@@ -1,5 +1,6 @@
 <?php
 
+use App\Notifications\SlackNotification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -97,3 +98,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/payments/create', 'PaymentController@create')->middleware('auth');
+Route::post('payments', 'PaymentController@store')->middleware('auth');
+Route::get('notifications', 'UserNotificationsController@show')->middleware('auth');
+
+Route::get('/home/slack', function () {
+    $user = App\User::first();
+    $user->notify(new SlackNotification());
+    return redirect()->to('/');
+});
+
