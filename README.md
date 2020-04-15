@@ -4,7 +4,9 @@
 
 On Root project, you must create .env file and add:
 
-```APP_key=```
+```
+   APP_KEY=
+```
 
 Then, on your console type:
 
