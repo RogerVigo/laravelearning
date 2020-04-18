@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -63,14 +64,22 @@ class User extends Authenticatable
         return $this->follows()->save($user);
     }
 
-    public function follows()
+    public function follows(): BelongsToMany
     {
         return $this->belongsToMany(
-            User::class,
+            __CLASS__,
             'follows',
             'user_id',
             'following_user_id'
-        )->withTimestamps();
+        );
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRouteKey()
+    {
+        return 'name';
     }
 
 }

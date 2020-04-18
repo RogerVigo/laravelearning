@@ -24,15 +24,26 @@
     <section class="px-8 py-4 mb-6">
         <header class="container mx-auto py-">
             <h1>
-                <img src="/images/logo.svg" alt="tweety">
+                <img src="/images/logo.svg" alt="">
             </h1>
         </header>
     </section>
     <section class="px-8">
         <main class="container mx-auto">
-            @yield('content')
+
         </main>
     </section>
+    <div class="lg:flex justify-between">
+        <div class="lg:w-32" style="max-width: 700px">
+            @include('_sidebar-links')
+        </div>
+        <div class="lg:flex-1 lg:mx-10" style="max-width: 700px">
+            @yield('content')
+        </div>
+        <div class="lg:w-1/6">
+            @include('_friends-list')
+        </div>
+    </div>
 </div>
 </body>
 </html>
