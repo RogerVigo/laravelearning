@@ -12,7 +12,9 @@
 
             <img src="{{auth()->user()->avatar}}"
                  alt="your avatar"
-                 class="rounded-b-full mr-2">
+                 class="rounded-full mr-2"
+                 width="50"
+                 height="50">
             <p>{{auth()->user()->name}}</p>
             <button type="submit" class="bg-blue-500 rounded rounded-lg shadow py-2 px-2 text-white">
                 Publish Tweet

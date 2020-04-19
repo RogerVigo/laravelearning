@@ -8,7 +8,9 @@
                     <a href="{{route('profile', $user->name)}}" class="flex items-center text-sm">
                         <img src="{{$user->avatar}}"
                              alt=""
-                             class="rounded mr-2">
+                             class="rounded mr-2"
+                             width="40"
+                             height="40">
 
                         {{$user->name}}
                     </a>
