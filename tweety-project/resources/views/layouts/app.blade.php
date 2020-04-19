@@ -34,15 +34,19 @@
         </main>
     </section>
     <div class="lg:flex justify-between">
-        <div class="lg:w-32" style="max-width: 700px">
-            @include('_sidebar-links')
-        </div>
+        @if(auth()->check())
+            <div class="lg:w-32" style="max-width: 700px">
+                @include('_sidebar-links')
+            </div>
+        @endif
         <div class="lg:flex-1 lg:mx-10" style="max-width: 700px">
             @yield('content')
         </div>
-        <div class="lg:w-1/6">
-            @include('_friends-list')
-        </div>
+        @if(auth()->check())
+            <div class="lg:w-1/6">
+                @include('_friends-list')
+            </div>
+        @endif
     </div>
 </div>
 </body>
