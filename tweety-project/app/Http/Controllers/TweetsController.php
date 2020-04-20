@@ -7,14 +7,27 @@ use function request;
 
 class TweetsController extends Controller
 {
+    public function index()
+    {
+        return view('tweets.index', [
+            'tweets' => auth()
+                ->user()
+                ->timeline(),
+        ]);
+    }
+
+
     public function store()
     {
-        $tweetAtribute = request()->validate(['body' => 'required|max:255']);
-        Tweet::create([
-            'user_id' => auth()->id(),
-            'body' => $tweetAtribute['body']
+        $attributes = request()->validate([
+            'body' => 'required|max:255',
         ]);
 
-        return redirect('/home');
+        Tweet::create([
+            'user_id' => auth()->id(),
+            'body' => $attributes['body'],
+        ]);
+
+        return redirect()->route('home');
     }
 }
