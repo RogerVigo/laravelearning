@@ -1,9 +1,8 @@
 <x-master>
     <div class="container mx-auto flex justify-center">
-        <x-panel>
-            <x-slot name="heading">Register</x-slot>
 
-            <form method="POST" action="{{ route('register') }}">
+
+        <form method="POST" action="{{ route('register') }}">
                 @csrf
 
                 <div class="mb-6">
@@ -116,6 +115,6 @@
                     </button>
                 </div>
             </form>
-        </x-panel>
+
     </div>
 </x-master>
