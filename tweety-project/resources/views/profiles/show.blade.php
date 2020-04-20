@@ -16,9 +16,7 @@
                 <p class="text-sm">Joined {{$user->created_at->diffForHumans()}}</p>
             </div>
             <div class="flex">
-                <a href=""
-                   class="rounded-full  border border-gray-200 py-2 px-4  mr-2 text-black text-xs">Edit Profile</a>
-
+                <x-editprofile-button :user="$user"></x-editprofile-button>
                 <x-follow-button :user="$user"></x-follow-button>
 
             </div>

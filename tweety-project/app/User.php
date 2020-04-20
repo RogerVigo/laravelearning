@@ -58,9 +58,12 @@ class User extends Authenticatable
         return $this->hasMany(Tweet::class)->latest();
     }
 
-    public function path()
+    //Function for create paths.
+    public function path($append = '')
     {
-        return route('profile', $this->name);
+        $path = route('profile', $this->name);
+
+        return $append ? "{$path}/{$append}" : $path;
     }
 
 }
