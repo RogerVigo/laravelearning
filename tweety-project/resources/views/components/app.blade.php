@@ -3,7 +3,7 @@
         <main class="container mx-auto">
             <div class="lg:flex lg:justify-center">
 
-                <div class="lg:w-32">
+                <div class="lg:w-1/6">
                     @include ('_sidebar-links')
                 </div>
 
