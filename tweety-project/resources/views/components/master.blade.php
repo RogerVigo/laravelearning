@@ -22,28 +22,21 @@
 <body>
 <div id="app">
     <section class="px-8 py-4 mb-6">
-        <header class="container mx-auto py-">
+        <header class="container mx-auto">
             <h1>
-                <img src="/images/logo.svg" alt="">
+                <a href="{{url('/tweets')}}">
+                    <img
+                        alt=""
+                        src="/images/logo.svg"
+                    >
+                </a>
             </h1>
         </header>
     </section>
-    <section class="px-8">
-        <main class="container mx-auto">
 
-        </main>
-    </section>
-    <div class="lg:flex justify-between">
-        <div class="lg:w-32" style="max-width: 700px">
-            @include('_sidebar-links')
-        </div>
-        <div class="lg:flex-1 lg:mx-10" style="max-width: 700px">
-            @yield('content')
-        </div>
-        <div class="lg:w-1/6">
-            @include('_friends-list')
-        </div>
-    </div>
+    {{ $slot }}
 </div>
+
+<script src="http://unpkg.com/turbolinks"></script>
 </body>
 </html>
