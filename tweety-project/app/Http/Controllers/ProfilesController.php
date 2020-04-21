@@ -7,6 +7,8 @@ use Illuminate\Validation\Rule;
 
 class ProfilesController extends Controller
 {
+
+
     public function show(User $user)
     {
         return view('profiles.show', compact('user'));
@@ -29,10 +31,13 @@ class ProfilesController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user)],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+        if (request('avatar')) {
+            $attributes['avatar'] = request('avatar')->store('avatars');
+        }
 
-        $attributes['avatar'] = request('avatar')->store('avatars');
         $user->update($attributes);
 
         return redirect($user->path());
     }
+
 }
