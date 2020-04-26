@@ -25,7 +25,11 @@ class UserTableSeeder extends Seeder
         foreach ($arrayValues as $value) {
             $user = User::find(random_int(1, $number_of_users));
             $follower_user = User::find($value);
-            $user->follow($follower_user);
+            if ($user !== $follower_user) {
+                $user->follow($follower_user);
+            } else {
+                $user->follow(random_int(1, $number_of_users + 1));
+            }
         }
 
 
