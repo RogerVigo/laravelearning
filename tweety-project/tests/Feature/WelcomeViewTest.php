@@ -35,7 +35,7 @@ class WelcomeViewTest extends TestCase
     public function test_user_can_see_text_failure()
     {
         $this->get('/')
-            ->assertSeeText('Twety')
+            ->assertSeeText('Tweety')
             ->assertSeeText('L0gin')
             ->assertSeeText('Regiter');
     }

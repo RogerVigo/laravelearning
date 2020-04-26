@@ -4,8 +4,6 @@
 namespace App;
 
 
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-
 trait Followable
 {
 
@@ -29,7 +27,7 @@ trait Followable
         return $this->follows()->where('following_user_id', $user->id)->exists();
     }
 
-    public function follows(): BelongsToMany
+    public function follows()
     {
         return $this->belongsToMany(
             __CLASS__,
