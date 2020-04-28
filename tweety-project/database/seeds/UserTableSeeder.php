@@ -13,9 +13,10 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $number_of_users = random_int(1, 10);
-        factory(User::class, $number_of_users)->create();
+        //$number_of_users = random_int(2, 10);
+        factory(User::class, 20)->create();
 
+        /*
         //Generamos un array con los ids de los usuarios
         $random_number_array = range(1, $number_of_users);
         shuffle($random_number_array);
@@ -27,10 +28,10 @@ class UserTableSeeder extends Seeder
             $follower_user = User::find($value);
             if ($user !== $follower_user) {
                 $user->follow($follower_user);
-            } else {
-                $user->follow(random_int(1, $number_of_users + 1));
+            } elseif($user===$follower_user) {
+                $user->follow( $number_of_users+random_int(1, $number_of_users));
             }
-        }
+        }*/
 
 
     }
