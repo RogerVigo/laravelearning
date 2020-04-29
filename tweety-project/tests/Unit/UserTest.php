@@ -6,21 +6,21 @@ use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
+
 class UserTest extends TestCase
 {
     use RefreshDatabase;
 
-    //Poniendo esto me borra la bdd
 
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    public function test_an_user_id_is_recorded()
     {
-        $user = factory(User::class)->create();
 
-        $this->assertTrue(isset($user->nombre));
+        User::create([
+            'username' => 'manolo',
+            'name' => $this->faker->firstName()
+
+        ]);
+
+        $this->assertCount(1, User::all());
     }
 }
