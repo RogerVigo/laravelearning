@@ -4,7 +4,7 @@
 
         <div class="relative">
             <img src="/images/profile-banner.jpg" alt="" class="mb-4">
-            <img src="{{$user->avatar}}"
+            <img src="/storage/avatars/{{ $user->avatar }}"
                  alt=""
                  class="rounded rounded-full mr-2 absolute bottom-0 transform translate-y-1/2 -translate-x-1/2 "
                  width="150px" style="left: 50%">

@@ -23,7 +23,7 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'username' => $faker->userName,
         'name' => $faker->name,
-        //'avatar' => $faker->image('public/storage/avatars', 200, 200, 'people', false, false, null),
+        'avatar' => $faker->image('public/storage/avatars', 200, 200, 'people', false, false, null),
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => '12345678', // password

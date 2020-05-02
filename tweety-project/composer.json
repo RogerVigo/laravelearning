@@ -1,7 +1,7 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Tweety Project",
     "keywords": [
         "framework",
         "laravel"
@@ -37,7 +37,7 @@
         }
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "App\\": "app/",
             "UnitTestFiles": ""
         },

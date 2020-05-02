@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/profiles/{user:username}/follow', 'FollowsController@store');
     Route::get('/profiles/{user:username}/edit', 'ProfilesController@edit')->middleware('can:edit,user');
     Route::patch('/profiles/{user:username}', 'ProfilesController@update')->middleware('can:edit,user');
+    Route::patch('/profiles/{user:username}', 'ProfilesController@update_avatar_user')->middleware('can:edit,user');
 
 });
 
