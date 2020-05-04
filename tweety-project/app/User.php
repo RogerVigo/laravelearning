@@ -46,7 +46,7 @@ class User extends Authenticatable
 
         return Tweet::whereIn('user_id', $friends)->orWhere('user_id', $this->id)
             ->latest()
-            ->get();
+            ->paginate(2);
         //Devuelve un array con la coleccion de ids en orden descendente
     }
 
@@ -67,5 +67,12 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function logout () {
+        //logout user
+        auth()->logout();
+        // redirect to homepage
+        return redirect('/');
     }
 }

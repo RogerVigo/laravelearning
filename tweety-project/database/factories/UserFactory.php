@@ -21,7 +21,7 @@ use Illuminate\Support\Str;
 $factory->define(User::class, function (Faker $faker) {
 
     return [
-        'username' => $faker->userName,
+        'username' => $faker->unique()->userName,
         'name' => $faker->name,
         'avatar' => $faker->image('public/storage/avatars', 200, 200, 'people', false, false, null),
         'email' => $faker->unique()->safeEmail,

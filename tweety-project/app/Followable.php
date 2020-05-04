@@ -19,7 +19,7 @@ trait Followable
         */
 
         //Using toggle method
-        $this->follows->toggle($user);
+        $this->follows()->toggle($user);
     }
 
     public function following(User $user)

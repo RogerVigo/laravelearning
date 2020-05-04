@@ -2,7 +2,7 @@
     <div>
         @foreach ($users as $user)
             <a href="{{ $user->path() }}" class="flex items-center mb-5">
-                <img src="{{ $user->avatar }}"
+                <img src="/storage/avatars/{{ $user->avatar ?: 'default-avatar.jpeg'}}"
                      alt="{{ $user->username }}'s avatar"
                      width="60"
                      class="mr-4 rounded"

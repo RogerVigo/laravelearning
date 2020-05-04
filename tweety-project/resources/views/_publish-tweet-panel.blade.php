@@ -6,11 +6,12 @@
     name="body"
     class="w-full"
     placeholder="Wazzup?"
+    required
 
 ></textarea>
         </label>
         <hr class="my-4">
-        <footer class="flex justify-between">
+        <footer class="flex justify-between items-center">
 
             <img src="{{asset('storage/avatars/'.Auth::user()->avatar)}}"
                  alt="your avatar"
@@ -18,12 +19,10 @@
                  width="50"
                  height="50">
             <p>{{auth()->user()->name}}</p>
-            <button type="submit" class="bg-blue-500 rounded rounded-lg shadow py-2 px-2 text-white">
+            <button type="submit" class="bg-blue-400 rounded rounded-lg hover:bg-blue-600 shadow py-2 px-10 text-white text-sm-center">
                 Publish Tweet
             </button>
         </footer>
     </form>
-    @error('body')
-    <p class="text-red-500 text-sm">{{$message}}</p>
-    @enderror
+
 </div>

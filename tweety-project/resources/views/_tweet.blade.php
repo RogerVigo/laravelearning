@@ -1,7 +1,7 @@
 <div class="flex py-4 {{$loop->last ? '':'border-b border-gray-400'}}">
     <div class="mr-5 flex-shrink-0">
         <a href="{{$tweet->user->path()}}">
-            <img src="{{$tweet->user->avatar}}"
+            <img src="/storage/avatars/{{ $tweet->user->avatar }}"
                  alt=""
                  class="rounded-full ml-2"
                  width="50"
