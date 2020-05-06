@@ -4,14 +4,14 @@
 
         <div class="relative">
             <img src="/images/profile-banner.jpg" alt="" class="mb-4">
-            <img src="{{$user->avatar}}"
+            <img src="/storage/avatars/{{ $user->avatar ?: 'default-avatar.jpeg'}}"
                  alt=""
                  class="rounded rounded-full mr-2 absolute bottom-0 transform translate-y-1/2 -translate-x-1/2 "
                  width="150px" style="left: 50%">
         </div>
 
         <div class="flex justify-between items-center mb-4">
-            <div>
+            <div style="max-width: 300px">
                 <h2 class="font-bold text-2xl mb-2 items-center"> {{$user->name}} </h2>
                 <p class="text-sm">Joined {{$user->created_at->diffForHumans()}}</p>
             </div>
@@ -31,7 +31,7 @@
     </header>
 
     @include('_timeline',[
-    'tweets'=>$user->tweets
+    'tweets'=>$tweets
 ])
 
 </x-app>

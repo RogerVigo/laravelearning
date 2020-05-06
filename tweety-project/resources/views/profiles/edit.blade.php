@@ -58,7 +58,7 @@
                        accept="image/*"
                 >
 
-                <img src="{{ $user->avatar }}"
+                <img src="{{asset('storage/avatars/'.Auth::user()->avatar)}}"
                      alt="your avatar"
                      class="rounded rounded-full ml-3"
                      width="50"

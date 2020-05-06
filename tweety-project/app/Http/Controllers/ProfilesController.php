@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 class ProfilesController extends Controller
@@ -11,7 +12,10 @@ class ProfilesController extends Controller
 
     public function show(User $user)
     {
-        return view('profiles.show', compact('user'));
+        return view('profiles.show', [
+            'user'=>$user,
+            'tweets'=>$user->tweets()->paginate(1)
+        ]);
     }
 
     public function edit(User $user)
@@ -27,16 +31,24 @@ class ProfilesController extends Controller
         $attributes = request()->validate([
             'username' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('users')->ignore($user)],
             'name' => ['required', 'string', 'max:255'],
-            'avatar' => ['file'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user)],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-        if (request('avatar')) {
-            $attributes['avatar'] = request('avatar')->store('avatars');
-        }
+
 
         $user->update($attributes);
 
+        return redirect($user->path());
+    }
+
+    public function update_avatar_user(User $user,Request $request)
+    {
+        if ($request->hasFile('avatar')){
+            $filename=$request->avatar->getClientOriginalName();
+            $request->avatar->storeAs('avatars',$filename,'public');
+
+            $user->update(['avatar'=>$filename]);
+        }
         return redirect($user->path());
     }
 

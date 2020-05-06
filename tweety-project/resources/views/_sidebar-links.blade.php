@@ -25,4 +25,12 @@
         </a>
     </li>
 
+    <li>
+        <form method="POST" action="{{ url('/logout') }}">
+            @csrf
+            <button class="font-bold text-lg">Logout</button>
+        </form>
+
+    </li>
+
 </ul>

@@ -3,10 +3,10 @@
 
     <ul>
         @forelse(auth()->user()->follows as $user)
-            <li class="mb-4">
+            <li class="{{$loop->last ?: 'mb-4'}}">
                 <div>
-                    <a href="{{route('profile', $user->name)}}" class="flex items-center text-sm">
-                        <img src="{{$user->avatar}}"
+                    <a href="{{route('profile', $user->username)}}" class="flex items-center text-sm">
+                        <img src="/storage/avatars/{{ $user->avatar ?: 'default-avatar.jpeg' }}"
                              alt=""
                              class="rounded mr-2"
                              width="40"
