@@ -64,10 +64,10 @@ class User extends Authenticatable
     }
 
     //encrypt password
-    public function setPasswordAttribute($value)
+   /* public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
-    }
+    }*/
 
     public function logout () {
         //logout user
